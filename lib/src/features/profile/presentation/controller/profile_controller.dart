@@ -5,7 +5,7 @@ import 'package:mini_project/src/features/profile/infrastructure/profile_reposit
 part 'profile_controller.g.dart';
 
 @riverpod
-Future<UserModel> profileController(ProfileControllerRef ref) async {
+Future<UserModel> profileController(Ref ref) async {
   final repo = ref.read(profileRepositoryProvider);
   return repo.getMe();
 }

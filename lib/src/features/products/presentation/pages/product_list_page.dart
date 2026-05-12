@@ -168,7 +168,7 @@ class ProductListPageState extends ConsumerState<ProductListPage> {
                 Consumer(
                   builder: (context, ref, _) {
                     final profileAsync = ref.watch(profileControllerProvider);
-                    final name = profileAsync.valueOrNull?.fullName ?? '';
+                    final name = profileAsync.value?.fullName ?? '';
                     return Text(
                       name,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: AppTheme.textPrimary),

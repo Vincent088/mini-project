@@ -6,7 +6,7 @@ import 'package:mini_project/src/features/auth/domain/model/auth_model.dart';
 part 'auth_repository.g.dart';
 
 @riverpod
-AuthRepository authRepository(AuthRepositoryRef ref) {
+AuthRepository authRepository(Ref ref) {
   return AuthRepository(ref.watch(dioProvider));
 }
 

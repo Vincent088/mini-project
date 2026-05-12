@@ -6,7 +6,7 @@ import 'package:mini_project/src/features/products/domain/model/product_model.da
 part 'product_repository.g.dart';
 
 @riverpod
-ProductRepository productRepository(ProductRepositoryRef ref) {
+ProductRepository productRepository(Ref ref) {
   return ProductRepository(ref.watch(dioProvider));
 }
 

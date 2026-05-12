@@ -26,7 +26,7 @@ class ProductListController extends _$ProductListController {
   }
 
   Future<void> loadMore() async {
-    final current = state.valueOrNull;
+    final current = state.value;
     if (current == null || current.isLoadingMore || !current.hasMore) return;
 
     state = AsyncData(current.copyWith(isLoadingMore: true));
@@ -52,23 +52,17 @@ class ProductListController extends _$ProductListController {
   }
 
   void updateProductInList(ProductModel updated) {
-    final current = state.valueOrNull;
+    final current = state.value;
     if (current == null) return;
     final updatedList = current.products.map((p) => p.id == updated.id ? updated : p).toList();
     state = AsyncData(current.copyWith(products: updatedList));
-  }
-
-  void prependProduct(ProductModel product) {
-    final current = state.valueOrNull;
-    if (current == null) return;
-    state = AsyncData(current.copyWith(products: [product, ...current.products]));
   }
 
   Future<bool> deleteProduct(int id) async {
     try {
       final repo = ref.read(productRepositoryProvider);
       await repo.deleteProduct(id);
-      final current = state.valueOrNull;
+      final current = state.value;
       if (current != null) {
         state = AsyncData(current.copyWith(products: current.products.where((p) => p.id != id).toList()));
       }
@@ -123,8 +117,7 @@ class AddProductController extends _$AddProductController {
     state = const AsyncLoading();
     try {
       final repo = ref.read(productRepositoryProvider);
-      final product = await repo.addProduct(data);
-      ref.read(productListControllerProvider.notifier).prependProduct(product);
+      await repo.addProduct(data);
       state = const AsyncData(null);
       return true;
     } catch (e, st) {

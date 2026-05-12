@@ -8,7 +8,7 @@ import 'package:mini_project/src/configs/services/storage_service.dart';
 part 'api_client.g.dart';
 
 @Riverpod(keepAlive: true)
-Dio dio(DioRef ref) {
+Dio dio(Ref ref) {
   final dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl, connectTimeout: const Duration(seconds: 15), receiveTimeout: const Duration(seconds: 15), headers: {'Content-Type': 'application/json'}));
 
   bool isHandling401 = false;

@@ -6,22 +6,46 @@ part of 'storage_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$storageServiceHash() => r'515f423528b4bc5af62e2a5ad82811309f54e75c';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [storageService].
 @ProviderFor(storageService)
-final storageServiceProvider = Provider<StorageService>.internal(
-  storageService,
-  name: r'storageServiceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$storageServiceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final storageServiceProvider = StorageServiceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef StorageServiceRef = ProviderRef<StorageService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class StorageServiceProvider
+    extends $FunctionalProvider<StorageService, StorageService, StorageService>
+    with $Provider<StorageService> {
+  StorageServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'storageServiceProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$storageServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<StorageService> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  StorageService create(Ref ref) {
+    return storageService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(StorageService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<StorageService>(value),
+    );
+  }
+}
+
+String _$storageServiceHash() => r'515f423528b4bc5af62e2a5ad82811309f54e75c';
