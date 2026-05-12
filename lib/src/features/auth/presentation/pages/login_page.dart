@@ -62,6 +62,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   label: 'Username',
                   hint: 'Enter your username',
                   prefixIcon: Icons.person_outline,
+                  maxLength: 50,
                   validator: (v) => v == null || v.isEmpty ? 'Username is required' : null,
                 ),
                 SizedBox(height: context.r(16)),
@@ -73,6 +74,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     hint: 'Enter your password',
                     prefixIcon: Icons.lock_outline,
                     obscureText: obscure,
+                    maxLength: 50,
                     suffixIcon: IconButton(
                       icon: Icon(obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: AppTheme.textSecondary),
                       onPressed: () => obscurePassword.value = !obscurePassword.value,

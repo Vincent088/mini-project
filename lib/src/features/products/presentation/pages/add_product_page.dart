@@ -82,6 +82,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                       label: 'Product Title',
                       hint: 'e.g. iPhone 15 Pro',
                       prefixIcon: Icons.title,
+                      maxLength: 100,
                       validator: (v) => v == null || v.isEmpty ? 'Title is required' : null,
                     ),
                     SizedBox(height: context.r(16)),
@@ -91,6 +92,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                       hint: 'Describe your product...',
                       prefixIcon: Icons.description_outlined,
                       maxLines: 3,
+                      maxLength: 500,
                       validator: (v) => v == null || v.isEmpty ? 'Description is required' : null,
                     ),
                     SizedBox(height: context.r(16)),
@@ -103,6 +105,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                             hint: '0.00',
                             prefixIcon: Icons.attach_money,
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            maxLength: 10,
                             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
                             validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                           ),
@@ -115,6 +118,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                             hint: '0',
                             prefixIcon: Icons.inventory_outlined,
                             keyboardType: TextInputType.number,
+                            maxLength: 6,
                             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                             validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                           ),
@@ -125,7 +129,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                     Row(
                       children: [
                         Expanded(
-                          child: AppTextField(controller: brandController, label: 'Brand', hint: 'e.g. Apple', prefixIcon: Icons.branding_watermark_outlined),
+                          child: AppTextField(controller: brandController, label: 'Brand', hint: 'e.g. Apple', prefixIcon: Icons.branding_watermark_outlined, maxLength: 50),
                         ),
                         SizedBox(width: context.r(12)),
                         Expanded(
@@ -134,6 +138,7 @@ class AddProductPageState extends ConsumerState<AddProductPage> {
                             label: 'Category',
                             hint: 'e.g. smartphones',
                             prefixIcon: Icons.category_outlined,
+                            maxLength: 50,
                             validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                           ),
                         ),

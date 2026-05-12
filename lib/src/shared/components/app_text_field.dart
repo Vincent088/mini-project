@@ -13,6 +13,7 @@ class AppTextField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.maxLines = 1,
+    this.maxLength,
     this.inputFormatters,
     this.enabled = true,
     this.onChanged,
@@ -27,6 +28,7 @@ class AppTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   final int maxLines;
+  final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final bool enabled;
   final ValueChanged<String>? onChanged;
@@ -39,15 +41,11 @@ class AppTextField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       maxLines: maxLines,
+      maxLength: maxLength,
       inputFormatters: inputFormatters,
       enabled: enabled,
       onChanged: onChanged,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        suffixIcon: suffixIcon,
-      ),
+      decoration: InputDecoration(labelText: label, hintText: hint, prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null, suffixIcon: suffixIcon, counterText: ''),
     );
   }
 }

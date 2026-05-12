@@ -50,16 +50,13 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
 
   Future<void> onSave() async {
     if (!formKey.currentState!.validate()) return;
-    final success = await ref.read(productEditControllerProvider.notifier).update(
-      widget.productId,
-      {
-        'title': titleController.text.trim(),
-        'description': descController.text.trim(),
-        'price': double.tryParse(priceController.text.trim()) ?? 0,
-        'stock': int.tryParse(stockController.text.trim()) ?? 0,
-        'brand': brandController.text.trim(),
-      },
-    );
+    final success = await ref.read(productEditControllerProvider.notifier).update(widget.productId, {
+      'title': titleController.text.trim(),
+      'description': descController.text.trim(),
+      'price': double.tryParse(priceController.text.trim()) ?? 0,
+      'stock': int.tryParse(stockController.text.trim()) ?? 0,
+      'brand': brandController.text.trim(),
+    });
     if (!mounted) return;
     if (success) {
       AppSnackbar.success(context, 'Product updated successfully');
@@ -93,18 +90,14 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
                     children: [
                       buildImagePreview(product.thumbnail),
                       SizedBox(height: context.r(24)),
-                      AppTextField(
-                        controller: titleController,
-                        label: 'Title',
-                        prefixIcon: Icons.title,
-                        validator: (v) => v == null || v.isEmpty ? 'Title is required' : null,
-                      ),
+                      AppTextField(controller: titleController, label: 'Title', prefixIcon: Icons.title, maxLength: 100, validator: (v) => v == null || v.isEmpty ? 'Title is required' : null),
                       SizedBox(height: context.r(16)),
                       AppTextField(
                         controller: descController,
                         label: 'Description',
                         prefixIcon: Icons.description_outlined,
                         maxLines: 3,
+                        maxLength: 500,
                         validator: (v) => v == null || v.isEmpty ? 'Description is required' : null,
                       ),
                       SizedBox(height: context.r(16)),
@@ -116,6 +109,7 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
                               label: 'Price (\$)',
                               prefixIcon: Icons.attach_money,
                               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              maxLength: 10,
                               inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
                               validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                             ),
@@ -127,6 +121,7 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
                               label: 'Stock',
                               prefixIcon: Icons.inventory_outlined,
                               keyboardType: TextInputType.number,
+                              maxLength: 6,
                               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                               validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                             ),
@@ -134,21 +129,12 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
                         ],
                       ),
                       SizedBox(height: context.r(16)),
-                      AppTextField(
-                        controller: brandController,
-                        label: 'Brand',
-                        prefixIcon: Icons.branding_watermark_outlined,
-                      ),
+                      AppTextField(controller: brandController, label: 'Brand', prefixIcon: Icons.branding_watermark_outlined, maxLength: 50),
                       SizedBox(height: context.r(32)),
                       Consumer(
                         builder: (context, ref, _) {
                           final isLoading = ref.watch(productEditControllerProvider).isLoading;
-                          return AppButton(
-                            label: 'Save Changes',
-                            icon: Icons.save_outlined,
-                            isLoading: isLoading,
-                            onPressed: isLoading ? null : onSave,
-                          );
+                          return AppButton(label: 'Save Changes', icon: Icons.save_outlined, isLoading: isLoading, onPressed: isLoading ? null : onSave);
                         },
                       ),
                     ],
@@ -169,16 +155,10 @@ class ProductEditPageState extends ConsumerState<ProductEditPage> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.grey.shade100,
-        image: DecorationImage(
-          image: NetworkImage(thumbnail),
-          fit: BoxFit.cover,
-        ),
+        image: DecorationImage(image: NetworkImage(thumbnail), fit: BoxFit.cover),
       ),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.black.withValues(alpha: 0.2),
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.black.withValues(alpha: 0.2)),
         child: Center(
           child: Icon(Icons.photo_library_outlined, color: Colors.white70, size: context.r(40)),
         ),
