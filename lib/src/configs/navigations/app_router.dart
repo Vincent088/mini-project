@@ -12,7 +12,7 @@ import 'package:mini_project/src/constants/app_constants.dart';
 part 'app_router.g.dart';
 
 @Riverpod(keepAlive: true)
-GoRouter appRouter(AppRouterRef ref) {
+GoRouter appRouter(Ref ref) {
   return GoRouter(
     initialLocation: AppRoutes.splash,
     redirect: (context, state) async {

@@ -6,22 +6,43 @@ part of 'profile_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileControllerHash() => r'c259300c228739c8ca4f118f7d6b2a3d4778db23';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [profileController].
 @ProviderFor(profileController)
-final profileControllerProvider = AutoDisposeFutureProvider<UserModel>.internal(
-  profileController,
-  name: r'profileControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final profileControllerProvider = ProfileControllerProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ProfileControllerRef = AutoDisposeFutureProviderRef<UserModel>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class ProfileControllerProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<UserModel>,
+          UserModel,
+          FutureOr<UserModel>
+        >
+    with $FutureModifier<UserModel>, $FutureProvider<UserModel> {
+  ProfileControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'profileControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$profileControllerHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<UserModel> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<UserModel> create(Ref ref) {
+    return profileController(ref);
+  }
+}
+
+String _$profileControllerHash() => r'c259300c228739c8ca4f118f7d6b2a3d4778db23';

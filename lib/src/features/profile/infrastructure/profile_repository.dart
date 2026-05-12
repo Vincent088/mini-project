@@ -6,7 +6,7 @@ import 'package:mini_project/src/features/profile/domain/model/user_model.dart';
 part 'profile_repository.g.dart';
 
 @riverpod
-ProfileRepository profileRepository(ProfileRepositoryRef ref) {
+ProfileRepository profileRepository(Ref ref) {
   return ProfileRepository(ref.watch(dioProvider));
 }
 

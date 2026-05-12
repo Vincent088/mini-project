@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'storage_service.g.dart';
 
 @Riverpod(keepAlive: true)
-StorageService storageService(StorageServiceRef ref) => StorageService();
+StorageService storageService(Ref ref) => StorageService();
 
 class StorageService {
   Future<SharedPreferences> get preferences => SharedPreferences.getInstance();

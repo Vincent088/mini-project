@@ -6,231 +6,249 @@ part of 'product_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$productListControllerHash() =>
-    r'eb2d3139f171014deb91ac28f7a8ab39382bbf7b';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [ProductListController].
 @ProviderFor(ProductListController)
-final productListControllerProvider =
-    AutoDisposeAsyncNotifierProvider<
-      ProductListController,
-      ProductListState
-    >.internal(
-      ProductListController.new,
-      name: r'productListControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$productListControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final productListControllerProvider = ProductListControllerProvider._();
 
-typedef _$ProductListController = AutoDisposeAsyncNotifier<ProductListState>;
-String _$productDetailControllerHash() =>
-    r'cf776d6eb386566b8a5ef6cfd44791de5023beca';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ProductDetailController
-    extends BuildlessAutoDisposeAsyncNotifier<ProductModel> {
-  late final int productId;
-
-  FutureOr<ProductModel> build(int productId);
-}
-
-/// See also [ProductDetailController].
-@ProviderFor(ProductDetailController)
-const productDetailControllerProvider = ProductDetailControllerFamily();
-
-/// See also [ProductDetailController].
-class ProductDetailControllerFamily extends Family<AsyncValue<ProductModel>> {
-  /// See also [ProductDetailController].
-  const ProductDetailControllerFamily();
-
-  /// See also [ProductDetailController].
-  ProductDetailControllerProvider call(int productId) {
-    return ProductDetailControllerProvider(productId);
-  }
-
-  @override
-  ProductDetailControllerProvider getProviderOverride(
-    covariant ProductDetailControllerProvider provider,
-  ) {
-    return call(provider.productId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'productDetailControllerProvider';
-}
-
-/// See also [ProductDetailController].
-class ProductDetailControllerProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          ProductDetailController,
-          ProductModel
-        > {
-  /// See also [ProductDetailController].
-  ProductDetailControllerProvider(int productId)
-    : this._internal(
-        () => ProductDetailController()..productId = productId,
-        from: productDetailControllerProvider,
-        name: r'productDetailControllerProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$productDetailControllerHash,
-        dependencies: ProductDetailControllerFamily._dependencies,
-        allTransitiveDependencies:
-            ProductDetailControllerFamily._allTransitiveDependencies,
-        productId: productId,
+final class ProductListControllerProvider
+    extends $AsyncNotifierProvider<ProductListController, ProductListState> {
+  ProductListControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'productListControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
       );
 
-  ProductDetailControllerProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.productId,
-  }) : super.internal();
+  @override
+  String debugGetCreateSourceHash() => _$productListControllerHash();
 
-  final int productId;
+  @$internal
+  @override
+  ProductListController create() => ProductListController();
+}
+
+String _$productListControllerHash() =>
+    r'f8addc1313f8a58084b2de606a86622f46028313';
+
+abstract class _$ProductListController
+    extends $AsyncNotifier<ProductListState> {
+  FutureOr<ProductListState> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref =
+        this.ref as $Ref<AsyncValue<ProductListState>, ProductListState>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<ProductListState>, ProductListState>,
+              AsyncValue<ProductListState>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
+
+@ProviderFor(ProductDetailController)
+final productDetailControllerProvider = ProductDetailControllerFamily._();
+
+final class ProductDetailControllerProvider
+    extends $AsyncNotifierProvider<ProductDetailController, ProductModel> {
+  ProductDetailControllerProvider._({
+    required ProductDetailControllerFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'productDetailControllerProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  FutureOr<ProductModel> runNotifierBuild(
-    covariant ProductDetailController notifier,
-  ) {
-    return notifier.build(productId);
-  }
+  String debugGetCreateSourceHash() => _$productDetailControllerHash();
 
   @override
-  Override overrideWith(ProductDetailController Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ProductDetailControllerProvider._internal(
-        () => create()..productId = productId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        productId: productId,
-      ),
-    );
+  String toString() {
+    return r'productDetailControllerProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeAsyncNotifierProviderElement<ProductDetailController, ProductModel>
-  createElement() {
-    return _ProductDetailControllerProviderElement(this);
-  }
+  ProductDetailController create() => ProductDetailController();
 
   @override
   bool operator ==(Object other) {
     return other is ProductDetailControllerProvider &&
-        other.productId == productId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, productId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ProductDetailControllerRef
-    on AutoDisposeAsyncNotifierProviderRef<ProductModel> {
-  /// The parameter `productId` of this provider.
-  int get productId;
-}
+String _$productDetailControllerHash() =>
+    r'cf776d6eb386566b8a5ef6cfd44791de5023beca';
 
-class _ProductDetailControllerProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class ProductDetailControllerFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ProductDetailController,
-          ProductModel
-        >
-    with ProductDetailControllerRef {
-  _ProductDetailControllerProviderElement(super.provider);
+          AsyncValue<ProductModel>,
+          ProductModel,
+          FutureOr<ProductModel>,
+          int
+        > {
+  ProductDetailControllerFamily._()
+    : super(
+        retry: null,
+        name: r'productDetailControllerProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ProductDetailControllerProvider call(int productId) =>
+      ProductDetailControllerProvider._(argument: productId, from: this);
 
   @override
-  int get productId => (origin as ProductDetailControllerProvider).productId;
+  String toString() => r'productDetailControllerProvider';
+}
+
+abstract class _$ProductDetailController extends $AsyncNotifier<ProductModel> {
+  late final _$args = ref.$arg as int;
+  int get productId => _$args;
+
+  FutureOr<ProductModel> build(int productId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<ProductModel>, ProductModel>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<ProductModel>, ProductModel>,
+              AsyncValue<ProductModel>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, () => build(_$args));
+  }
+}
+
+@ProviderFor(ProductEditController)
+final productEditControllerProvider = ProductEditControllerProvider._();
+
+final class ProductEditControllerProvider
+    extends $NotifierProvider<ProductEditController, AsyncValue<void>> {
+  ProductEditControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'productEditControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$productEditControllerHash();
+
+  @$internal
+  @override
+  ProductEditController create() => ProductEditController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AsyncValue<void> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AsyncValue<void>>(value),
+    );
+  }
 }
 
 String _$productEditControllerHash() =>
     r'e5a364ab59cf0687e741e11e0c8faf590d195778';
 
-/// See also [ProductEditController].
-@ProviderFor(ProductEditController)
-final productEditControllerProvider =
-    AutoDisposeNotifierProvider<
-      ProductEditController,
-      AsyncValue<void>
-    >.internal(
-      ProductEditController.new,
-      name: r'productEditControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$productEditControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+abstract class _$ProductEditController extends $Notifier<AsyncValue<void>> {
+  AsyncValue<void> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<void>, AsyncValue<void>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<void>, AsyncValue<void>>,
+              AsyncValue<void>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
 
-typedef _$ProductEditController = AutoDisposeNotifier<AsyncValue<void>>;
-String _$addProductControllerHash() =>
-    r'6471ce8983bbd2e8a09ca453dafdcbcb5f1b6a1a';
-
-/// See also [AddProductController].
 @ProviderFor(AddProductController)
-final addProductControllerProvider =
-    AutoDisposeNotifierProvider<
-      AddProductController,
-      AsyncValue<void>
-    >.internal(
-      AddProductController.new,
-      name: r'addProductControllerProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$addProductControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final addProductControllerProvider = AddProductControllerProvider._();
 
-typedef _$AddProductController = AutoDisposeNotifier<AsyncValue<void>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class AddProductControllerProvider
+    extends $NotifierProvider<AddProductController, AsyncValue<void>> {
+  AddProductControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'addProductControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$addProductControllerHash();
+
+  @$internal
+  @override
+  AddProductController create() => AddProductController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AsyncValue<void> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AsyncValue<void>>(value),
+    );
+  }
+}
+
+String _$addProductControllerHash() =>
+    r'68068c06be0008fcb53d848255b04ceda59bc193';
+
+abstract class _$AddProductController extends $Notifier<AsyncValue<void>> {
+  AsyncValue<void> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<void>, AsyncValue<void>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<void>, AsyncValue<void>>,
+              AsyncValue<void>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
