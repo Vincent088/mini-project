@@ -27,6 +27,9 @@ class ProductListPageState extends ConsumerState<ProductListPage> {
 
   Timer? debounceTimer;
   final searchQuery = ValueNotifier<String>('');
+  final showScrollToTop = ValueNotifier<bool>(false);
+
+  static const _scrollToTopThreshold = 400.0;
 
   @override
   void initState() {
@@ -38,6 +41,7 @@ class ProductListPageState extends ConsumerState<ProductListPage> {
   void dispose() {
     debounceTimer?.cancel();
     searchQuery.dispose();
+    showScrollToTop.dispose();
     searchController.dispose();
     scrollController
       ..removeListener(onScroll)
@@ -60,9 +64,20 @@ class ProductListPageState extends ConsumerState<ProductListPage> {
     ref.read(productListControllerProvider.notifier).search('');
   }
 
+  void scrollToTop() {
+    final distance = scrollController.offset;
+    final ms = (distance / 5000 * 1000).clamp(350, 1400).toInt();
+    scrollController.animateTo(
+      0,
+      duration: Duration(milliseconds: ms),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
   void onScroll() {
     if (!scrollController.hasClients) return;
     final position = scrollController.position;
+    showScrollToTop.value = position.pixels >= _scrollToTopThreshold;
     final nearBottom = position.pixels >= position.maxScrollExtent - 200.0;
     if (nearBottom) {
       ref.read(productListControllerProvider.notifier).loadMore();
@@ -73,6 +88,15 @@ class ProductListPageState extends ConsumerState<ProductListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.background,
+      floatingActionButton: ValueListenableBuilder<bool>(
+        valueListenable: showScrollToTop,
+        builder: (context, visible, _) => AnimatedScale(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOutBack,
+          scale: visible ? 1.0 : 0.0,
+          child: FloatingActionButton.small(onPressed: scrollToTop, backgroundColor: AppTheme.primary, foregroundColor: Colors.white, elevation: 4, child: const Icon(Icons.keyboard_arrow_up_rounded)),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
