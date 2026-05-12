@@ -58,6 +58,12 @@ class ProductListController extends _$ProductListController {
     state = AsyncData(current.copyWith(products: updatedList));
   }
 
+  void prependProduct(ProductModel product) {
+    final current = state.valueOrNull;
+    if (current == null) return;
+    state = AsyncData(current.copyWith(products: [product, ...current.products]));
+  }
+
   Future<bool> deleteProduct(int id) async {
     try {
       final repo = ref.read(productRepositoryProvider);
@@ -117,7 +123,8 @@ class AddProductController extends _$AddProductController {
     state = const AsyncLoading();
     try {
       final repo = ref.read(productRepositoryProvider);
-      await repo.addProduct(data);
+      final product = await repo.addProduct(data);
+      ref.read(productListControllerProvider.notifier).prependProduct(product);
       state = const AsyncData(null);
       return true;
     } catch (e, st) {
